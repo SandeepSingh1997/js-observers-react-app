@@ -1,10 +1,12 @@
 import "./App.css";
 import ResizeComponent from "./ResizeComponent";
+import MutationComponent from "./MutationComponent";
 
 function App() {
   return (
     <div>
-      <ResizeComponent />
+      {/* <ResizeComponent /> */}
+      <MutationComponent />
     </div>
   );
 }
