@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  display: flex;
+}
+.container div {
+  width: 700px;
+  height: 100px;
+  font-size: 100px;
+  background-color: red;
+  transition: background-color 1s, font-size 1s;
+}
+
+textarea {
+  width: 200px;
+}
