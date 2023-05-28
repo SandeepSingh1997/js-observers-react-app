@@ -1,27 +1,35 @@
-import { useEffect } from "react";
-import "./MutationComponent.css";
+import { useEffect, useRef } from "react";
 
 export default function MutationComponent() {
+  const textAreaRef = useRef(null);
+
+  // settting up mutation observer
   useEffect(() => {
-    const divNode = document.querySelector(".container");
-    const mutationObserver = new MutationObserver((entries) => {});
-    mutationObserver.observe(divNode, {
+    const mutationObserver = new MutationObserver((entries) => {
+      console.log(entries);
+    });
+    mutationObserver.observe(textAreaRef.current, {
       childList: true,
-      attributes: true,
     });
   }, []);
 
+  //Not relevant to mutation just for fun
   function handleSayHello() {
-    const divNode = document.querySelector(".container");
+    const divNode = textAreaRef.current;
     const spanNode = document.createElement("span");
-    const textNode = document.createTextNode("Hello!");
+    const textNode = document.createTextNode("Hello");
     spanNode.appendChild(textNode);
     divNode.appendChild(spanNode);
     divNode.style.backgroundColor = "#ff0000";
   }
+
   return (
     <div>
-      <div className="container"></div>
+      <div
+        contentEditable={true}
+        style={{ backgroundColor: "red" }}
+        ref={textAreaRef}
+      ></div>
       <button onClick={handleSayHello}>say hello</button>
     </div>
   );
